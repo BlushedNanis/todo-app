@@ -1,8 +1,9 @@
 import functions
 from time import strftime
 
-now = strftime("%b %d, %Y - %H:%S")
-print("It is: ", now)
+
+print('This is a git test')
+
 
 while True:
     user_input = input("Type add, show, edit, complete or exit: ")
