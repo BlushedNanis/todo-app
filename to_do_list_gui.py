@@ -1,6 +1,12 @@
 import functions
 import PySimpleGUI as sg
 from time import strftime
+from os import path
+
+
+if not path.exists('todos.txt'):
+    with open('todos.txt', 'w') as file:
+        pass
 
 sg.theme('DarkGrey11')
 enter_todo_label = sg.Text("Enter a to-do:")
