@@ -1,9 +1,10 @@
 import functions
 import PySimpleGUI as sg
+from time import strftime
 
-
+sg.theme('DarkGrey11')
 enter_todo_label = sg.Text("Enter a to-do:")
-message_label = sg.Text('Hello there!')
+clock_label = sg.Text('')
 input_box = sg.InputText(tooltip='Enter a to-do:', key='todo')
 add_button = sg.Button('Add')
 todos_box = sg.Listbox(functions.get_todos(), key = 'selected_todo',
@@ -14,15 +15,14 @@ exit_button = sg.Button('Exit')
 
 window = sg.Window('To-do App',
                    font=('Verdana', 10),
-                   layout=[[enter_todo_label],
+                   layout=[[clock_label],
+                           [enter_todo_label],
                            [input_box, add_button],
-                           [message_label],
                            [todos_box, complete_button, edit_button],
                            [exit_button]])
 
 while True:
-    event, values = window.read()
-    print (event,values)
+    event, values = window.read(timeout=500)
     match event:
         case 'Add':
             todos = functions.get_todos()
@@ -40,8 +40,9 @@ while True:
                 todos_box.update(todos)
                 input_box.update('')
             except IndexError:
-                message_label.update("First select the todo from the list,"
-                                     "\nthen press the COMPLETE button")
+                sg.popup("First select the todo from the list,"
+                        "\nthen press the COMPLETE button",
+                        font=('Verdana', 10))
                 continue
         case 'Edit':
             try:
@@ -51,14 +52,16 @@ while True:
                 functions.write_todos(todos)
                 todos_box.update(todos)
             except IndexError:
-                message_label.update("First select the todo from the list,"
-                                     "\nthen type a new todo and finally"
-                                     "press the EDIT button")
+                sg.popup("First select the todo from the list,"
+                        "then type a new todo\nand finally "
+                        "press the EDIT button",
+                        font=('Verdana', 10))
                 continue
         case 'Exit':
             break
         case sg.WIN_CLOSED:
             break
+    clock_label.update(strftime("%b %d, %Y - %H:%M:%S"))
     
 window.close()
 
