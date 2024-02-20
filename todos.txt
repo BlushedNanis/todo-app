@@ -2,6 +2,4 @@ Clean The Computer
 Clean The Kitchen
 Shower the dog
 Listen tu music
-Charge the pc
-Go to sleep early
-Eat a hamburger
+Assemble the pc
