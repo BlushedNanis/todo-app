@@ -1,5 +1,6 @@
-Clean The Computer
-Clean The Kitchen
-Shower the dog
-Listen to music
-Assemble the pc
+Do laundry
+Clean the pc
+Clean the room
+Clean the kitchen
+Learn more python
+Sleep earlier

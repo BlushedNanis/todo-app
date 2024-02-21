@@ -18,6 +18,7 @@ def complete_todos():
         if st.session_state[index] == True:
             new_todos.remove(todo)
     functions.write_todos(new_todos)
+    st.balloons()
     
 def priority_mark():
     marked_todos = functions.get_todos()
@@ -52,7 +53,7 @@ st.text_input('Todo entry', label_visibility='hidden',
 
 col1, col2 , col3 = st.columns([2, 1, 1])
 with col1:
-    st.button('Complete', key='complete',
+    st.button('Complete	:white_check_mark:', key='complete',
             on_click=complete_todos)
 with col2:
     st.button(':red[Mark as pripority]'
@@ -61,4 +62,6 @@ with col2:
 with col3:
     st.button('Mark as normal:grey_exclamation:',
               key='normal', on_click=normal_mark)
-st.session_state
+
+st.caption("_Made by BlushedNanis_ :copyright:")
+#st.session_state
