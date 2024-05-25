@@ -1,0 +1,6 @@
+:red[Do laundry]:exclamation:
+Clean the pc
+Clean the room
+Clean the kitchen
+:red[Learn more python]:exclamation:
+Sleep earlier
