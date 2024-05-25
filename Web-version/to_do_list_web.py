@@ -3,6 +3,10 @@ import functions
 
 
 def add_todo():
+    """
+    Catch user input if there is any to add it to the todos.txt.
+    If there isn't a new input then it will do nothing.
+    """
     todo = st.session_state['new_todo'].capitalize()
     if todo == '':
         return
@@ -13,6 +17,9 @@ def add_todo():
         st.session_state['new_todo'] = ''
     
 def complete_todos():
+    """
+    Removes the marked todo by the user from todos.txt
+    """
     new_todos = functions.get_todos()
     for index, todo in enumerate(functions.get_todos()):
         if st.session_state[index] == True:
@@ -21,6 +28,9 @@ def complete_todos():
     st.balloons()
     
 def priority_mark():
+    """
+    Marks an existent to-do as priority (red color)
+    """
     marked_todos = functions.get_todos()
     for index, todo in enumerate(functions.get_todos()):
         if st.session_state[index] == True:
@@ -29,6 +39,9 @@ def priority_mark():
     functions.write_todos(marked_todos)
     
 def normal_mark():
+    """
+    Marks an existent to-do as normal (standard color)
+    """
     normal_todos = functions.get_todos()
     for index, todo in enumerate(functions.get_todos()):
         if st.session_state[index] == True:
@@ -36,7 +49,7 @@ def normal_mark():
             normal_todos[index] = (todo[0][5:] + '\n')
     functions.write_todos(normal_todos)
 
-
+# Set Web-app body
 st.title("To do app")
 st.write("Minimalistic to-do app.")
 
@@ -64,4 +77,3 @@ with col3:
               key='normal', on_click=normal_mark)
 
 st.caption("_Made by BlushedNanis_ :copyright:")
-#st.session_state
