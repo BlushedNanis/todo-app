@@ -1,14 +1,18 @@
 import functions
 from time import strftime
 
+
+# Display time
 now = strftime("%b %d, %Y - %H:%M:%S")
 print("It is: ", now)
 
 while True:
+    # Main loop
     user_input = input("Type add, show, edit, complete or exit: ")
     user_input = user_input.strip()
     
     if user_input.startswith("add"):
+        # Catch user input to execute the corresponding code
         todo = user_input[4:].capitalize() + '\n'
         todos = functions.get_todos()
         todos.append(todo)
