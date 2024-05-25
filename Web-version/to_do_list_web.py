@@ -1,6 +1,13 @@
 import streamlit as st
 import functions
+from os import path
 
+
+# Create text file if doesn't exists
+if not path.exists('todos.txt'):
+    with open('todos.txt', 'w') as file:
+        pass
+    
 
 def add_todo():
     """
